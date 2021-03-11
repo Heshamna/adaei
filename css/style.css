@@ -1,0 +1,297 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  background: #e3e3e3;
+}
+
+.big-container{
+  overflow: hidden;
+}
+.right-page{
+  float: right;
+  width: 13%;
+}
+.left-page{
+    float: left;
+    width: 87%;
+}
+/* القالب */
+.container{
+  width: 70%;
+  margin: 20px auto;
+  padding: 10px;    
+  background-color: rgb(54, 136, 136);
+  overflow: hidden;
+  text-align: center;
+  border-radius: 4px;
+}
+
+/* الصندوق داخل القالب */
+.box{
+  background-color: #a4b6b8;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: right;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* السايد بار */
+#sidebar {
+  position: fixed;
+  right: 0;
+  width: 15%;
+  height: 100%;
+  background: #a4a5a5;
+}
+
+#sidebar header {
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  line-height: 70px;
+  background: #949596;
+}
+
+#sidebar header a{
+  text-decoration: none;
+  color: white;
+}
+#sidebar ul a{
+  text-decoration: none;
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: white;
+  text-align: right;
+  padding-right: 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  transition: .4s;
+}
+#sidebar ul a:hover{
+  padding-right: 50px;
+  background-color: #adadad;
+}
+#sidebar li{
+  list-style: none;
+}
+
+/* فوتر */
+.footer{
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  bottom:0;
+  width: 100%; 
+}
+
+/* قسم تسجيل الدخول و التسجيل */
+.account{
+  background-color: #a0b1b3;
+  margin: 5px;
+  padding: 5px;
+}
+
+.mid{
+  margin-top: 10% ;
+}
+
+.left-account{
+  float: left;
+  width: 60%;
+  padding: 5px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.left-account p{
+  padding: 10px;
+}
+.right-account{
+  float: right;
+  width: 40%;
+  padding: 10px;
+  text-align: center;
+}
+.admin-container{
+  margin: 20px auto;
+  padding: 10px;
+  background-color: rgb(54, 136, 136);
+  overflow: hidden;
+  text-align: center;
+  border-radius: 4px;
+  width: 47%;
+}
+.admin{
+  margin: 0 auto;
+  text-align: center;
+}
+.login-admin{
+  padding: 10px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.input-fild{
+  font-size: 16px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.438);
+  outline: none;
+  border: 0px;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  width: 90%;
+  text-align: right;
+}
+
+.msg{
+  padding-top: 4px;
+  font-size: 20px;
+}
+.msg a{
+  font-size: large;
+  text-decoration: none;
+  font-size: 19px;
+} .msg a:hover{
+  color: rgb(16, 33, 80);
+}
+.a-btn{
+  text-decoration: none;
+  font-size: 15px;
+  padding: 10px 45px;
+  width: 0px;
+  border-radius: 5px;
+  color: black;
+  background-color: rgb(231, 229, 229);
+}.a-btn:hover{
+  background-color: rgb(182, 180, 180);
+}
+
+.btn{
+  font-size: 16px;
+  padding: 10px;
+  width: 250px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color:rgba(80, 80, 80, 0.548);
+}.btn:hover{
+  background-color:rgba(51, 50, 50, 0.548);
+  color: white;
+}
+
+/* قسم صفحة حول الموقع!! */
+.about-top{
+  height: 300px;
+  background-color: cadetblue;
+
+}
+#about .about-top h1{
+  text-align: center;
+  padding: 15px;
+  font-size: 45px;
+}
+.about-bottom{
+  text-align: right;
+  padding: 25px 10px;
+  margin: 20px 0px;
+  overflow: hidden;
+}
+.about-right{
+  float: right;
+  width: 70%;
+}
+.about-left{
+  float: left;
+  width: 30%;
+}
+
+/* قسم صفحة المهمام + التقيم */
+.right{
+  float: right;
+}
+.task{
+  overflow: hidden;
+  font-size: 20px;
+}
+.right-task{
+  float: right;
+  width: 80%;
+}
+.left-task{
+  text-align: center;
+  float: left;
+  width: 20%;
+}
+.left-task .btn{
+  width: 100%;
+}
+
+/* M_evaluation قسم صفحة تقيم المهام الخاصه في المدير */
+.evalution{
+  border: #333 solid 2px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px;
+}
+.evalution .input-fild{
+  width: 50%;
+  float: right;
+  padding-top: 5px;
+  margin-top: 15px;
+}
+
+.evalution label{
+  font-size: 20px;
+  float: right;
+  border: #333 solid 2px;
+  text-align: right;
+  width: 30%;
+  margin-top: 17px;
+
+}
+.eva-btn{
+  background-color:rgba(80, 80, 80, 0.548);
+  margin-top: 10px;
+  width: 35%;
+
+}
+
+/* add page */
+.add{
+  border: #5f7a7e solid 2px;
+  background-color: #81989b;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 7px;
+}
+.add p{
+  text-align: right;
+  margin-right: 27px;
+}
+.add-contianer{
+  width: 40%;
+  margin-top: 5%;
+  padding: 7px;
+}
+.time{
+  width: 45%;
+  text-align: right;
+  margin:0 3px;
+}
+textarea{
+  height: 150px;
+}
+
+.M_task{
+background-color: #949596;
+margin-top: 15px ;
+width: 100px;
+}
