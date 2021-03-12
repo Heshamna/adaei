@@ -10,45 +10,43 @@
         <h3>الترقيه الى مدير</h3>
         <br><br>
         <form action="upgrade.php" method="post">
-            
-            <select name="upgrade" class="input-fild" id="">
+            <select name="upgrade" class="input-fild">
                 <option>اختر اسم الموظف</option>
                 <?php
-                    $managers = $conn->query("SELECT *,concat(full_name) as name FROM employee 
-                    where is_manager=0 order by concat(full_name) asc ");
-
-                    while($row= $managers->fetch_assoc()):
+                    $resultset = $conn->query("SELECT * from employee where is_manager=0 order by full_name asc");
+                    while($row= $resultset->fetch_assoc()):
+                        $full_name=$row['full_name'];
                 ?>
-                <option value="<?php echo ucwords($row['id_employee']) ?>">
-                    <?php echo ucwords($row['full_name']) ?>
+                <option value="<?php echo $full_name;?>" >
+                    <?php echo $full_name;?>
                 </option>
 
                 <?php endwhile; ?>
-            </select>            
+            </select>
         <br><br>
             <input type="submit" class="btn" value="ترقية">
         </form>
     </div>
-    <br><br>
 
+    <br><br>
         <?php
             $managers = $conn->query("SELECT *,concat(full_name) as name FROM employee 
                                       where is_manager=1 order by concat(full_name) asc ");
-            
             while($row= $managers->fetch_assoc()):
         ?>
             <div class="box">
                 <div class="task">
-                    <div class="right-task">
-                        <p> <?php echo ucwords($row['full_name']) ?> </p>
+                    <form action="" method="post">
+                        <div class="right-task">
+                            <p> <?php echo ucwords($row['full_name']) ?> </p>
+                        </div>
+                        <div class="left-task">
+                            <input type="submit" class="btn" value="الغاء الترقية">
                     </div>
-                    <div class="left-task">
-                        <input type="submit" class="btn" value="الغاء الترقية">
-                    </div>
+                    </form>
                 </div>
             </div>
             <?php endwhile; ?>
-
 </div>
 
 <?php include("../footer.php");?>

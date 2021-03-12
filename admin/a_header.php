@@ -15,7 +15,7 @@
         
         <div class="right-page">
             <div id="sidebar">
-                <header><a href="/">أدائي</a></header>
+                <header><a href="department.php">أدائي</a></header>
                 <ul>
                     <li><a href="department.php">ادارة الاقسام</a></li>
                     <li><a href="up-down.php">ادارة المدراء</a></li>

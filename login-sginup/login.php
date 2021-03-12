@@ -2,6 +2,7 @@
 include("../config.php");
 
 $error="";
+$class="";
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
     //something was posted
@@ -18,35 +19,36 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             $data = $stmt_result->fetch_assoc();
             if($data['password'] === $password && $data['is_manager'] === 0){
 
-                header('Location:/ada-copy/employee/task.php');
+                header('Location:/adaei/employee/task.php');
                 die;
                 
             }if($data['password'] === $password && $data['is_manager'] === 1){
 
-                header('Location:/ada-copy/manager/M_task.php');
+                header('Location:/adaei/manager/M_task.php');
                 die;
             }
                 else{
-                $error= "تاكد من كلمة المرور";
-            }
+                    $error= "تاكد من كلمة المرور";
+                    $class="error";            }
         }else {
             $error= " تاكد من اسم المستخدم و كلمة المرور";
+            $class="error";
         }
     }
 }
-	
 ?>
 
 
 <?php include("header.php");?>
-
+    <div class="admin-container mid" style="margin-top:10%;">
+        <div class="box admin">
             <div class="right-account">
                 <h1>مرحبا بك في موقع أدائي</h1>
                 <br>
                 <h3> تسجيل الدخول للموظف و المدير</h3>
                 <br>
 
-                <div style="background-color: red;"><?php echo $error?></div>
+                <div class="<?php echo $class?>"><?php echo $error?></div>
                 
                 <br>
                 <form action="login.php" method="post">

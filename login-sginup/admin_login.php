@@ -2,6 +2,7 @@
     include("../config.php");
 
     $error="";
+    $class="";
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         //something was posted
@@ -23,9 +24,11 @@
                     
                 }else{
                 $error= "تاكد من كلمة المرور";
+                $class="error";
                 }
             }else{
-                $error= " تاكد من اسم المستخدم و كلمة المرور";
+                $error="تاكد من اسم المرور او كلمة السر";
+                $class="error";
             }
         }
     }
@@ -34,12 +37,14 @@
 
 
 <?php include("header.php");?>
+    <div class="admin-container mid" style="margin-top:10%; width: 35%;">
+        <div class="box admin">
             <div class="login-admin">
                 <h1>مرحبا بك في موقع أدائي</h1>
                 <br>
                 <h3>تسجيل الدخول المسؤل</h3>
 
-                <div style="background-color: red;"><?php echo $error?></div>
+                <div class="<?php echo $class?>"><?php echo $error?></div>
 
                 <br>
                 <form action="admin_login.php" method="post">

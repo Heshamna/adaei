@@ -14,7 +14,7 @@
         
         <div class="right-page">
             <div id="sidebar">
-                <header><a href="/">أدائي</a></header>
+                <header><a href="../manager/M_task.php">أدائي</a></header>
                 <ul>
                     <li><a href="../manager/M_task.php">المهام المرسلة</a></li>
                     <li><a href="../manager/M_evalution.php">تقيم المهمه</a></li>

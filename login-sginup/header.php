@@ -9,5 +9,3 @@
 
 </head>
 <body>
-    <div class="admin-container mid">
-        <div class="box admin">

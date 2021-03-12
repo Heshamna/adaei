@@ -7,6 +7,6 @@
             header("Location: up-down.php");
             die;
         }else {
-            echo"not downgrade!";
+            echo"not upgrade!";
         }
 ?>
