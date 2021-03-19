@@ -1,8 +1,8 @@
 <?php   include ("../config.php");
 
-        $upgrade=$_POST['upgrade'];
+        $id_employee=$_POST['upgrade'];
 
-        $query="update employee set is_manager=1 where full_name='$upgrade'";
+        $query="update employee set is_manager=1 where id_employee='$id_employee'";
         if(mysqli_query($conn,$query)){
             header("Location: up-down.php");
             die;

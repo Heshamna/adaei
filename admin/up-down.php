@@ -16,8 +16,9 @@
                     $resultset = $conn->query("SELECT * from employee where is_manager=0 order by full_name asc");
                     while($row= $resultset->fetch_assoc()):
                         $full_name=$row['full_name'];
+                        $id_employee=$row['id_employee'];
                 ?>
-                <option value="<?php echo $full_name;?>" >
+                <option value="<?php echo $id_employee ?>" >
                     <?php echo $full_name;?>
                 </option>
 
@@ -41,7 +42,7 @@
                             <p> <?php echo ucwords($row['full_name']) ?> </p>
                         </div>
                         <div class="left-task">
-                            <input type="submit" class="btn" value="الغاء الترقية">
+                            <a href="downgrade.php?id_employee=<?php echo $row['id_employee']?>" class="a-btn">تخفيض</a>   
                     </div>
                     </form>
                 </div>

@@ -1,7 +1,9 @@
 <?php if(!isset($conn)){ include '../config.php'; } ?>
 
 <?php include("a_header.php");?>
+<style>
 
+</style>
 <div class="container" style="width: 70%;">
     <h1>ادارة الاقسام</h1>
     <br>
@@ -12,36 +14,50 @@
         <form action="create_dept.php" method="post">
             <input type="text" class="input-fild" name="name" placeholder="اسم القسم" required>     
             <br><br>
-            <select name="manager_id" class="input-fild" required>
-            <option>اختر اسم المدير</option>
-                <?php 
-                $managers = $conn->query("SELECT *,concat(full_name) as name FROM employee where is_manager = 1 order by concat(full_name) asc ");
-                while($row= $managers->fetch_assoc()):?>
+            <select name="manager_id[]" class="input-fild multiple-select"  multiple>
 
-                <option value="<?php echo $row['id_employee'] ?>"
-                 <?php echo isset($manager_id) && $manager_id == $row['id_employee'] ? "selected" : '' ?>><?php echo ucwords($row['name']) ?></option>
-                <?php endwhile; ?>
-
+                <?php
+                    $query="select * from employee where is_manager=1";
+                    $query_run=mysqli_query($conn,$query);
+                    if(mysqli_num_rows($query_run)>0){
+                        foreach($query_run as $row){
+                            ?>
+                            <option value="<?php echo $row['id_employee']?>">
+                                <?php echo $row['full_name'];?>
+                            </option>
+                            <?php
+                        }
+                    }else{
+                        echo"no record found";
+                    }
+                ?>
             </select>
 
             <br><br>
-            <select name="user_ids" class="input-fild select2"  required>
-                <option>اختر اسم الموظف</option>
-                <?php 
-              	$employees = $conn->query("SELECT *,concat(full_name) as name FROM employee where is_manager = 0 order by concat(full_name) asc ");
-              	while($row= $employees->fetch_assoc()):
-              	?>
-              	<option value="<?php echo $row['id_employee'] ?>"
-                   <?php echo isset($user_ids) && in_array($row['id_employee'],explode(',',$user_ids)) ? "selected" : '' ?>><?php echo ucwords($row['name']) ?></option>
-              	<?php endwhile; ?>
-    
+            <select name="employee_ids[]" class="input-fild multiple-select2"  multiple>
+                <?php
+                    $query="select * from employee where is_manager=0";
+                    $query_run=mysqli_query($conn,$query);
+                    if(mysqli_num_rows($query_run)>0){
+                        foreach($query_run as $row){
+                            ?>
+                            <option value="<?php echo $row['id_employee']?>">
+                                <?php echo $row['full_name'];?>
+                            </option>
+                            <?php
+                        }
+                    }else{
+                        echo"no record found";
+                    }
+                ?>    
             </select>
             <br><br>
+
             <input type="submit" class="btn" value="إنشاء">
-           
         </form>
     </div>
     <br><br>
+    
 
     <?php
         $department=$conn->query("SELECT * FROM `department` ORDER BY `department`.`id_department` ASC");
@@ -49,15 +65,37 @@
     <div class="box">
         <div class="task">
             <div class="right-task">
-            <?php echo ucwords($row['name']); ?>
+            <?php echo ucwords($row['name']); ?><br>
+            <?php echo ucwords($row['id_department']); ?><br>
             </div>
 
             <div class="left-task">
-            <input type="submit" class="btn" value="حذف القسم">
+            <a href="delete_dept.php?id_department= <?php echo $row['id_department']?>" class="a-btn">حذف</a>
             </div>
         </div>
     </div>
     <?php endwhile;?>
 
 </div>
+
 <?php include("../footer.php");?>
+
+<script>
+        $(document).ready(function(){
+            $(".multiple-select").select2({
+                    placeholder: "اختر المدراء", //placeholder
+                    tags: true,
+                    tokenSeparators: ['/',',',';'," "] 
+                });
+            })
+    </script>
+    
+    <script>
+        $(document).ready(function(){
+            $(".multiple-select2").select2({
+                    placeholder: "اختر الموظفين", //placeholder
+                    tags: true,
+                    tokenSeparators: ['/',',',';'," "] 
+                });
+            })
+    </script>

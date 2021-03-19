@@ -1,12 +1,12 @@
 <?php   include ("../config.php");
 
-        $upgrade=$_POST['upgrade'];
-
-        $query="update employee set is_manager=1 where full_name='$upgrade'";
-        if(mysqli_query($conn,$query)){
-            header("Location: up-down.php");
-            die;
-        }else {
-            echo"not upgrade!";
-        }
+    $id_employee= $_GET['id_employee'];
+    $query="update employee set is_manager=0 where id_employee='$id_employee'";
+    if(mysqli_query($conn,$query)){
+        header("Location: up-down.php");
+        die;
+        
+    }else{
+        echo "not downgraded!!";
+    }
 ?>
