@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2021 at 03:31 PM
+-- Generation Time: Mar 19, 2021 at 05:04 PM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.2
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,7 +49,7 @@ INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
 CREATE TABLE `department` (
   `id_department` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `manager_id` int(30) DEFAULT NULL,
+  `manager_id` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_ids` text COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -58,8 +58,9 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`id_department`, `name`, `manager_id`, `user_ids`) VALUES
-(1, 'computer', 3, '4'),
-(2, 'computer', 3, '1');
+(29, 'محمد', '14', '1, 3'),
+(30, 'محمد', '14', '1, 3, 4'),
+(35, 'A prject', '8, 16', '1, 3');
 
 -- --------------------------------------------------------
 
@@ -84,9 +85,17 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`id_employee`, `id_department`, `is_manager`, `username`, `password`, `full_name`, `email`, `point`) VALUES
 (1, NULL, 0, 'mohammed', '1', 'mohammed alotibi', 'm7mdx511x@gmail.com', 10),
-(3, NULL, 1, 'man', '1', 'manger', 'm@', 20.5),
+(3, NULL, 0, 'man', '1', 'manger', 'm@', 20.5),
 (4, NULL, 0, 'Ahmad', '1', 'Ahmad alomary', 'm@', 22),
-(6, NULL, 0, 'Bader', '1', 'Bader khaled', 'm@', 24);
+(6, NULL, 0, 'Bader', '1', 'Bader khaled', 'm@', 24),
+(7, NULL, 0, 'qwe', 'qwe', 'qwe', 'qwe@gmail.com', 7),
+(8, NULL, 0, 'asd', 'asd', 'asd', 'asd@gmail.com', 10),
+(9, NULL, 0, 'zxc', 'zxc', 'zxc', 'zxc@gmail.com', 3),
+(10, NULL, 0, 'cvb', 'cvb', 'cvb', 'cvb@gmail.com', 7),
+(13, NULL, 0, 'rtyu', 'tyu', 'tyu', 'tyu@gmail.com', 36),
+(14, NULL, 1, 'fgh', 'fgh', 'fgh', 'asd@gmail.com', 10),
+(15, NULL, 0, 'lkj', 'lkj', 'lkj', 'lkj@gmail.com', 29),
+(16, NULL, 1, 'kjh', 'kjh', 'kjh', 'kjh@gmail.com', 17);
 
 -- --------------------------------------------------------
 
@@ -154,13 +163,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id_department` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_department` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id_employee` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_employee` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `task`
