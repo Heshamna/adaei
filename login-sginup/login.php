@@ -1,6 +1,6 @@
-<?php
-include("../config.php");
+<?php session_start();
 
+include("../config.php");
 $error="";
 $class="";
 if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     //something was posted
     $username = $_POST['username'];
     $password = $_POST['password'];
-
+    
     if(!empty($username) && !empty($password))
     {
         $stmt = $conn->prepare("select * from employee where username = ?");
@@ -18,12 +18,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         if($stmt_result->num_rows > 0) {
             $data = $stmt_result->fetch_assoc();
             if($data['password'] === $password && $data['is_manager'] === 0){
-
+                $_SESSION['id_employee']=$data['id_employee'];
+                $_SESSION['full_name']=$data['full_name'];
                 header('Location:/adaei/employee/task.php');
                 die;
                 
             }if($data['password'] === $password && $data['is_manager'] === 1){
-
+                $_SESSION['id_employee']=$data['id_employee'];
+                $_SESSION['full_name']=$data['full_name'];
                 header('Location:/adaei/manager/M_task.php');
                 die;
             }
@@ -58,7 +60,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                             <br><br>
                     <input type="submit" class="btn" value="تسجيل الدخول" >
 
-                    <p class="msg"> ليس لديك حساب؟ <a href="signup.php">هنا </a></p>
+                    <p class="msg"> أنشئ حسابك  <a href="signup.php">هنا </a></p>
                 </form>
             </div>
             

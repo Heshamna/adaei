@@ -1,4 +1,6 @@
-<?php include("m_header.php");?>
+<?php include("../config.php");
+include("m_header.php");
+?>
             <div class="container">
                 
                 <h1> صفحة المهام المرسلة </h1>

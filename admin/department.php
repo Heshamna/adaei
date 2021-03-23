@@ -14,8 +14,8 @@
         <form action="create_dept.php" method="post">
             <input type="text" class="input-fild" name="name" placeholder="اسم القسم" required>     
             <br><br>
-            <select name="manager_id[]" class="input-fild multiple-select"  multiple>
-
+            <select name="manager_id[]" class="input-fild multiple-select">
+                <option disabled selected>اختر اسم المدير</option>
                 <?php
                     $query="select * from employee where is_manager=1";
                     $query_run=mysqli_query($conn,$query);
@@ -60,20 +60,21 @@
     
 
     <?php
-        $department=$conn->query("SELECT * FROM `department` ORDER BY `department`.`id_department` ASC");
+        $department=$conn->query("SELECT * FROM `department` ORDER BY `department`.`id_department` DESC");
         while($row=$department->fetch_assoc()):?>
-    <div class="box">
-        <div class="task">
-            <div class="right-task">
-            <?php echo ucwords($row['name']); ?><br>
-            <?php echo ucwords($row['id_department']); ?><br>
-            </div>
+        <div class="box">
+            <div class="task">
+                <div class="right-task">
+                <?php echo $row['name']; ?><br>
+                <?php echo $row['id_department']; ?><br>
 
-            <div class="left-task">
-            <a href="delete_dept.php?id_department= <?php echo $row['id_department']?>" class="a-btn">حذف</a>
+                </div>
+
+                <div class="left-task">
+                <a href="delete_dept.php?id_department= <?php echo $row['id_department']?>" class="a-btn" onclick="return  confirm('هل تريد حذف القسم؟')">حذف</a>
+                </div>
             </div>
         </div>
-    </div>
     <?php endwhile;?>
 
 </div>

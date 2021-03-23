@@ -11,7 +11,7 @@
         <br><br>
         <form action="upgrade.php" method="post">
             <select name="upgrade" class="input-fild">
-                <option>اختر اسم الموظف</option>
+                <option disabled selected>اختر اسم الموظف</option>
                 <?php
                     $resultset = $conn->query("SELECT * from employee where is_manager=0 order by full_name asc");
                     while($row= $resultset->fetch_assoc()):
@@ -33,8 +33,7 @@
         <?php
             $managers = $conn->query("SELECT *,concat(full_name) as name FROM employee 
                                       where is_manager=1 order by concat(full_name) asc ");
-            while($row= $managers->fetch_assoc()):
-        ?>
+            while($row= $managers->fetch_assoc()):?>
             <div class="box">
                 <div class="task">
                     <form action="" method="post">
@@ -42,7 +41,7 @@
                             <p> <?php echo ucwords($row['full_name']) ?> </p>
                         </div>
                         <div class="left-task">
-                            <a href="downgrade.php?id_employee=<?php echo $row['id_employee']?>" class="a-btn">تخفيض</a>   
+                            <a href="downgrade.php?id_employee=<?php echo $row['id_employee']?>" class="a-btn" onclick="return  confirm('هل تريد إزالة ترقية المدير؟')">إزالة_المدير </a>   
                     </div>
                     </form>
                 </div>

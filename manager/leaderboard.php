@@ -1,4 +1,6 @@
-<?php include("m_header.php"); ?>
+<?php include("m_header.php");
+      include("../config.php");
+?>
 
 <style>
 * {
@@ -8,7 +10,7 @@
   text-align: center;
 }
 .colorT{
- color: green;
+ color: #009879;
 }
 .content-table {
   border-collapse: collapse;
@@ -47,21 +49,15 @@
     <h1 class="colorT">لائحة المتصدرين</h1> 
     <table class="content-table ">
         <thead>
-
         <tr> 
             <th> المركز</th> 
             <th> الاسم</th> 
             <th> النقاط</th> 
         </tr> 
-
         </thead>
 
-
-        <?php 
-
-        $con = mysqli_connect("localhost", "root", "", "ada"); 
-        
-        $result = mysqli_query($con, "SELECT full_name, 
+        <?php         
+        $result = mysqli_query($conn, "SELECT full_name, 
         point FROM employee ORDER BY point DESC "); 
         
         $ranking = 1; 

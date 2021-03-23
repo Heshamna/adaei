@@ -1,4 +1,9 @@
 <!-- employee header -->
+<?php
+    session_start();
+
+    $name=$_SESSION['full_name'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أدائي</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body>
     <div class="big-container">
@@ -14,6 +20,7 @@
         <div class="right-page">
             <div id="sidebar">
                 <header><a href="../employee/task.php">أدائي</a></header>
+                <header><i class="fas fa-user"> </i><?php echo " ".$name;?></header>
                 <ul>
                     <li><a href="../employee/task.php">المهام</a></li>
                     <li><a href="../employee/evaluation.php">التقيم</a></li>

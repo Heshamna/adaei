@@ -1,4 +1,8 @@
 <!-- manager header -->
+<?php
+    session_start();
+    $name=$_SESSION['full_name'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أدائي</title>
     <link rel="stylesheet" href="../css/style.css">
-
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body>
     <div class="big-continer">
@@ -15,6 +19,7 @@
         <div class="right-page">
             <div id="sidebar">
                 <header><a href="../manager/M_task.php">أدائي</a></header>
+                <header><i class="fas fa-user"> </i><?php echo " ".$name;?></header>
                 <ul>
                     <li><a href="../manager/M_task.php">المهام المرسلة</a></li>
                     <li><a href="../manager/M_evalution.php">تقيم المهمه</a></li>
@@ -27,4 +32,4 @@
         </div>
         <!-- للجزء اليسار في الصفحه التي تحتوي على كل شي ماعدا السايد بار -->
 
-        <div class="left-page">
+    <div class="left-page">

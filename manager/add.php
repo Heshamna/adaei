@@ -1,12 +1,24 @@
-<?php include("m_header.php");?>
+<?php include("../config.php"); 
+include("m_header.php");
+?>
             <div class="container add-contianer">
                 <div class="add">
                     <form action="" method="POST">
                         <select name="" class="input-fild">
-                            <option value="">اسم الموظف</option>
-                            <option value=""> احمد</option>
-                            <option value="">خالد</option>
-                            <option value="">محمد</option>
+                            <option disabled selected>--اختر اسم الموظف--</option>
+                            <?php 
+                                $id=$_SESSION['id_employee'];
+                                $data=mysqli_query($conn, "SELECT * from department where manager_id='$id'");
+                                foreach($data as $row){
+                                    $arr=explode(", ",$row['user_ids']);
+                                }
+                                foreach($arr as $id_employee){
+                                    $result=$conn->query("SELECT * from employee where id_employee='$id_employee'");
+                                    
+                                    while($row=$result->fetch_assoc()):?>
+                                        <option value="<?php echo $row["id_employee"];?>"><?php echo $row['full_name'];?></option>
+                                    <?php endwhile;
+                                }?>
                         </select>
                         <br><br>
 
